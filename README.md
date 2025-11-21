@@ -21,17 +21,17 @@ According to the assignment description, the application must:
 ### High-Level Architecture
 ```
 
-                         +-----------------------------+
-                         |         API Gateway         |
-                         |     POST /process-image     |
-                         +--------------+--------------+
-                                        |
-                                        v
-                           +---------------------------+
-                           |      Step Functions       |
-                           |  ResizeImageStateMachine  |
-                           | Choice → Task → Success   |
-                           +--------------+------------+
+                           +-----------------------------+
+                           |         API Gateway         |
+                           |     POST /process-image     |
+                           +--------------+--------------+
+                                          |
+                                          v
+                            +---------------------------+
+                            |      Step Functions       |
+                            |  ResizeImageStateMachine  |
+                            | Choice → Task → Success   |
+                            +-------------+-------------+
                                           |
                                           v
                              +-------------------------+
@@ -107,33 +107,33 @@ S3 bucket for resized images with a folder inside called output
 
 2. Lambda Function
 
-* Triggered when a new image is received or via Step Functions
+    * Triggered when a new image is received or via Step Functions
 
-* Uses Pillow from a Lambda Layer
+    * Uses Pillow from a Lambda Layer
 
-* Resizes images to thumbnail size
+    * Resizes images to thumbnail size
 
-* Saves resized output to second S3 bucket
+    * Saves resized output to second S3 bucket
 
 
 3. Step Funtions Workflow
 
-* Task state → Invoke Lambda
+    * Task state → Invoke Lambda
 
-* Choice state → Check if resize succeeded
+    * Choice state → Check if resize succeeded
 
-* Success state → Image processed
+    * Success state → Image processed
 
-* Fail state → Error path
+    * Fail state → Error path
 
 
 4. API Gateway - Step Functions Integration
 
-* This is implemented using an AWS Service integration (Step Functions StartExecution)
+    * This is implemented using an AWS Service integration (Step Functions StartExecution)
 
-*  Final Invoke URL:
+    *  Final Invoke URL:
 
-*  https://s8vwce6r90.execute-api.us-east-1.amazonaws.com/prod/process-image
+    *  https://s8vwce6r90.execute-api.us-east-1.amazonaws.com/prod/process-image
 
 ### Deployement Instructions
 
