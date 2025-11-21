@@ -222,6 +222,10 @@ Step 4 - Create API Gateway Endpoint
 
 8. Deploy Stage: prod
 
+Create New Stage 
+
+Name: prod
+
 Step 5 - Test the Pipeline
 
 Use the API Gateway Test Console
@@ -239,7 +243,7 @@ Use HTTP Post on Postman
 
 Paste the invoke URL
 
-You may have to add the resource end point after prod
+You may have to add the resource endpoint after prod
 
 https://s8vwce6r90.execute-api.us-east-1.amazonaws.com/prod
 
