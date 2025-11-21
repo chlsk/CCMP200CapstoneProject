@@ -1,0 +1,30 @@
+{
+  "Comment": "Image processing workflow with Choice, Success, Fail states",
+  "StartAt": "ResizeImage",
+  "States": {
+    "ResizeImage": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:273354628455:function:ImageResizeFunction",
+      "Next": "CheckStatus"
+    },
+    "CheckStatus": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.status",
+          "StringEquals": "SUCCESS",
+          "Next": "SuccessState"
+        }
+      ],
+      "Default": "FailState"
+    },
+    "SuccessState": {
+      "Type": "Succeed"
+    },
+    "FailState": {
+      "Type": "Fail",
+      "Error": "ResizeFailed",
+      "Cause": "Image resizing failed."
+    }
+  }
+}
