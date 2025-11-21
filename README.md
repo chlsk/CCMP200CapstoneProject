@@ -137,19 +137,19 @@ S3 bucket for resized images with a folder inside called output
 
 Step 1 - Create S3 Buckets
 
-![S3 Buckets](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/S3BucketDashboard.png?raw=true)
+![S3 Buckets](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/S3BucketDashboard.png?raw=true)
 
 Create two S3 buckets, one for your original image and another for the resized image. Since your original image will be the input we will place an input folder inside that bucket and our test .jpg image inside that folder.
 
-![S3 Bucket 1 Input](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/S3OriginalImageInput.png?raw=true)
+![S3 Bucket 1 Input](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/S3OriginalImageInput.png?raw=true)
 
-![S3 Bucket 1 with test image](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/S3OriginalImageInputTestImage.png?raw=true)
+![S3 Bucket 1 with test image](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/S3OriginalImageInputTestImage.png?raw=true)
 
 * Bucket 1: chels-original-images/input/ -> chels-original-images/input/test.jpg
 
 The second bucket will be for you resized image and we will place an output folder inside that bucket for the results.
 
-![S3 Bucket 2 Output](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/S3ResizedImageOutput.png?raw=true)
+![S3 Bucket 2 Output](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/S3ResizedImageOutput.png?raw=true)
 
 * Bucket 2: chels-resized-images/output/
 
@@ -162,15 +162,15 @@ Step 2 - Craete Lambda Function
 
 3. Add Lambda Layer containing Pillow
 
-![Lambda Function](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/ImageResizeFunction.png?raw=true)
+![Lambda Function](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/ImageResizeFunction.png?raw=true)
 
-![Layer](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/Layers.png?raw=true)
+![Layer](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/Layers.png?raw=true)
 
 4. Assign IAM Role:
 
-![Lambda IAM Role](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/LambdaExecutionRole.png?raw=true)
+![Lambda IAM Role](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/LambdaExecutionRole.png?raw=true)
 
-![Lambda IAM Role Policy](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/LambdaExecutionRoleS3Permissions.png?raw=true)
+![Lambda IAM Role Policy](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/LambdaExecutionRoleS3Permissions.png?raw=true)
 
 *  s3:GetObject from original bucket
 
@@ -181,7 +181,7 @@ Step 3 - Build Step Functions State Machine
 
 * Include: Task → Choice → Success/Fail
 
-![State Machine](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/StatemachineVisualWorkFlow.png?raw=true)
+![State Machine](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/StatemachineVisualWorkFlow.png?raw=true)
 
 * Use your Lambda ARN in the Task state.
 
@@ -204,7 +204,7 @@ Step 4 - Create API Gateway Endpoint
 
 6. Credentials: Execution role
 
-![Gateway Endpoint](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/ResourcesPage.png?raw=true)
+![Gateway Endpoint](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/ResourcesPage.png?raw=true)
 
 7. Add a Mapping Template:
 
@@ -216,7 +216,7 @@ Step 4 - Create API Gateway Endpoint
 }
 
 ```
-![Mapping Template](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/IntegrationRequestMappingTemplate.png?raw=true)
+![Mapping Template](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/IntegrationRequestMappingTemplate.png?raw=true)
 
 8. Deploy Stage: prod
 
@@ -237,7 +237,7 @@ Use HTTP Post on Postman
 
 Paste the invoke URL
 
-![Stage Screen Invoke URL](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/DeployedStagePage.png?raw=true)
+![Stage Screen Invoke URL](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/DeployedStagePage.png?raw=true)
 
 Example:
 
@@ -255,17 +255,17 @@ Expected Result:
     "startDate": 1.763664454447E9
 }
 ```
-![Postman Result](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/PostmanTestSuccess.png?raw=true)
+![Postman Result](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/PostmanTestSuccess.png?raw=true)
 
 Finally:
 
 1. Upload an image to chels-original-images/input/
 
-![Original](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/OriginalImage.png?raw=true)
+![Original](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/OriginalImage.png?raw=true)
 
 2. Verify results in chels-resized-images/output/
 
-![Results](https://github.com/SaskPolytechBIS/CCMP200Capstone/blob/main/images/ResizedImage.png?raw=true)
+![Results](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/ResizedImage.png?raw=true)
 
 If the resized image is there CONGRATS you've made a serverless image processing pipeline!!
 
