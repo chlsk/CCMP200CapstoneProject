@@ -62,7 +62,7 @@ You will need:
 
 * Pillow Layer:
 
-    Tip: Use Cloudshell to download a Pillow Layer
+    Tip: Use CloudShell to download
 
     Ensure to use the SAME python runtime as your Lambda Function (Here I used Python 3.9) as Pillow (Python) is deployed via a Lambda Layer
 
@@ -115,6 +115,7 @@ S3 bucket for resized images with a folder inside called output
 
 * Saves resized output to second S3 bucket
 
+
 3. Step Funtions Workflow
 
 * Task state → Invoke Lambda
@@ -124,6 +125,7 @@ S3 bucket for resized images with a folder inside called output
 * Success state → Image processed
 
 * Fail state → Error path
+
 
 4. API Gateway - Step Functions Integration
 
