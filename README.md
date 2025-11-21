@@ -239,6 +239,14 @@ Use HTTP Post on Postman
 
 Paste the invoke URL
 
+You may have to add the resource end point after prod
+
+https://s8vwce6r90.execute-api.us-east-1.amazonaws.com/prod
+
+Add your process-image endpoint
+
+https://s8vwce6r90.execute-api.us-east-1.amazonaws.com/prod/process-image
+
 ![Stage Screen Invoke URL](https://github.com/chlsk/CCMP200CapstoneProject/blob/main/images/DeployedStagePage.png?raw=true)
 
 Example:
